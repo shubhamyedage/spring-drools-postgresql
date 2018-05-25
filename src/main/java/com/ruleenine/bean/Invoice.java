@@ -8,8 +8,8 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "Inovoice")
-public class Inovoice {
+@Table(name = "Invoice")
+public class Invoice {
 
     @Id
     @Column(name = "InvoiceDocumentNo")
