@@ -1,0 +1,26 @@
+package rules
+import com.ruleengine.bean.Inovoice
+import com.ruleengine.bean.Payment
+
+
+rule "match inovoice number"
+when
+bean.Inovoice($in_invoice_document_no: invoice_document_no)
+bean.Payment($in_invoice_document_no != invoice_document_no)
+then
+System.out.println( bean.Inovoice.getInvoice_document_no() );
+end
+rule "match currency code"
+when
+bean.Inovoice($in_currency_code: currency_code)
+bean.Payment($in_currency_code != currency_code)
+then
+System.out.println( bean.Inovoice.getCurrency_code() );
+end
+rule "match amount"
+when
+bean.Inovoice($in_amount: total_amount)
+bean.Payment($in_amount > total_amount)
+then
+System.out.println( bean.Inovoice.getTotal_amount() );
+end
