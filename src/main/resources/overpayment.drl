@@ -1,0 +1,14 @@
+import com.ruleenine.bean.Payment;
+import com.ruleenine.bean.Invoice;
+
+
+dialect  "mvel"
+
+rule "Check Overpayment"
+when
+    invoice: Invoice($invoice_total_amount: total_amount)
+    payment: bean.Payment($invoice_total_amount < total_amount)
+
+then
+    System.out.println("hello");
+end
